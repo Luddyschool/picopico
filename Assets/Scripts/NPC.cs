@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AudioImageSynchronizer : MonoBehaviour
+public class NPC : MonoBehaviour
 {
     [Header("Audio Settings")]
     public AudioSource audioSource;
@@ -15,22 +16,76 @@ public class AudioImageSynchronizer : MonoBehaviour
 
     private int currentIndex = 0;
 
+    [Header("TOSORT/")]
+    public bool isPlayerNearby;
+    public GameObject player;
+    public float dialogueTriggeringDistance;
+    private bool isDialogueStarted;
+
     void Start()
     {
         // 确保至少有一个音频片段和一个图像
+        
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= dialogueTriggeringDistance && 
+            !isDialogueStarted)
+        {
+            isPlayerNearby = true;
+            isDialogueStarted = true;
+            PlayAudioWhenPlayerNearby();
+        }
+
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= dialogueTriggeringDistance &&
+            isDialogueStarted)
+        {
+            isPlayerNearby = false;
+            isDialogueStarted = false;
+        }
+
+        if (isPlayerNearby)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+    }
+
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            
+        }
+    }
+    */
+
+    public void PlayAudioWhenPlayerNearby()
+    {
         if (audioClips.Count == 0 || images.Count == 0 || audioSource == null || imageComponent == null)
         {
             Debug.LogError("Missing required components or clips/images");
             return;
         }
-
         StartCoroutine(PlayAudioAndSwitchImages());
     }
-
+    
     // 协同程序，用来依次播放音频和切换图片
     IEnumerator PlayAudioAndSwitchImages()
     {
-        while (true)
+        currentIndex = 0;
+        while (isPlayerNearby)
         {
             if (currentIndex < audioClips.Count && currentIndex < images.Count)
             {
@@ -51,5 +106,7 @@ public class AudioImageSynchronizer : MonoBehaviour
                 currentIndex = 0;
             }
         }
+        
+        StopCoroutine(PlayAudioAndSwitchImages());
     }
 }
