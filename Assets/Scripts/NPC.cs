@@ -33,16 +33,13 @@ public class NPC : MonoBehaviour
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= dialogueTriggeringDistance && 
             !isDialogueStarted)
         {
-            isPlayerNearby = true;
-            isDialogueStarted = true;
-            PlayAudioWhenPlayerNearby();
+            
         }
 
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= dialogueTriggeringDistance &&
             isDialogueStarted)
         {
-            isPlayerNearby = false;
-            isDialogueStarted = false;
+            
         }
 
         if (isPlayerNearby)
@@ -108,5 +105,18 @@ public class NPC : MonoBehaviour
         }
         
         StopCoroutine(PlayAudioAndSwitchImages());
+    }
+    
+    public void OnPlayerGazed()
+    {
+        isPlayerNearby = true;
+        isDialogueStarted = true;
+        PlayAudioWhenPlayerNearby();
+    }
+
+    public void OnPlayerStopGazed()
+    {
+        isPlayerNearby = false;
+        isDialogueStarted = false;
     }
 }
