@@ -576,7 +576,6 @@ GameObject:
   - component: {fileID: 2376136392731582003}
   - component: {fileID: 4370582849052613913}
   - component: {fileID: 5998288340982920425}
-  - component: {fileID: 5890993007411779309}
   - component: {fileID: -1340189738418063150}
   m_Layer: 0
   m_Name: NPC
@@ -592,7 +591,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7238801043977860312}
-  m_LocalRotation: {x: -0, y: 0.71502703, z: -0, w: 0.69909686}
+  m_LocalRotation: {x: 0, y: 0.71502805, z: 0, w: 0.6990958}
   m_LocalPosition: {x: -22.84, y: 0.8207829, z: 17.94}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
@@ -601,7 +600,7 @@ Transform:
   - {fileID: 5813973898776404041}
   - {fileID: 7256823084409768248}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 91.291, z: 0}
 --- !u!114 &2376136392731582003
 MonoBehaviour:
@@ -739,39 +738,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5890993007411779309
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7238801043977860312}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &-1340189738418063150
 MonoBehaviour:
   m_ObjectHideFlags: 0
