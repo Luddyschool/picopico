@@ -11,7 +11,7 @@ namespace FarmingEngine
     /// Items are objects that can be picked, dropped and held into the player's inventory. Some item can also be crafted or used as crafting material.
     /// </summary>
 
-    [RequireComponent(typeof(Selectable))]
+    [RequireComponent(typeof(Selectable))] 
     [RequireComponent(typeof(UniqueID))]
     public class Item : Craftable
     {

@@ -11,6 +11,7 @@ public class GrabAndPlace : MonoBehaviour
         grabInteractable = GetComponent<XRGrabInteractable>();
     }
 
+    [System.Obsolete]
     void OnEnable()
     {
         grabInteractable.onSelectExited.AddListener(OnRelease);
