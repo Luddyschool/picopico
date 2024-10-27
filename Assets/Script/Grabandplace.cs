@@ -17,6 +17,7 @@ public class GrabAndPlace : MonoBehaviour
         grabInteractable.onSelectExited.AddListener(OnRelease);
     }
 
+    [System.Obsolete]
     void OnDisable()
     {
         grabInteractable.onSelectExited.RemoveListener(OnRelease);

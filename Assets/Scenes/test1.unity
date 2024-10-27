@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 908395387}
   - component: {fileID: 908395386}
   - component: {fileID: 908395385}
-  - component: {fileID: 908395384}
+  - component: {fileID: 908395389}
   m_Layer: 0
   m_Name: blanket
   m_TagString: Untagged
@@ -1517,19 +1517,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &908395384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908395383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa22a43546fc4e0b8c08706566a99e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetContainer: {fileID: 908395388}
 --- !u!65 &908395385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1616,6 +1603,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908395389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908395383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7665b846be898f4db48ea7142f122dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appleCount: 0
+  completionEffect: {fileID: 0}
+  completionAudio: {fileID: 0}
 --- !u!1001 &938196650
 PrefabInstance:
   m_ObjectHideFlags: 0
