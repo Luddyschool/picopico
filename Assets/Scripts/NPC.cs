@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class NPC : MonoBehaviour
 {
@@ -22,10 +23,18 @@ public class NPC : MonoBehaviour
     public float dialogueTriggeringDistance;
     private bool isDialogueStarted;
 
+    [Header("FollowPlayerNPC")] 
+    public bool isFollower;
+
+    private XRSimpleInteractable myXRinteract;
+
     void Start()
     {
         // 确保至少有一个音频片段和一个图像
-        
+        myXRinteract = GetComponent<XRSimpleInteractable>();
+        myXRinteract.firstHoverEntered.AddListener(OnPlayerGazed);
+        myXRinteract.lastHoverExited.AddListener(OnPlayerStopGazed);
+
     }
 
     private void Update()
@@ -99,22 +108,31 @@ public class NPC : MonoBehaviour
             }
             else
             {
-                // 当所有音频和图像都播放完成时，循环重新开始
-                currentIndex = 0;
+                if (isFollower)
+                {
+                    OnPlayerStopGazed(new HoverExitEventArgs());
+                    myXRinteract.firstHoverEntered.RemoveListener(OnPlayerGazed);
+                    myXRinteract.lastHoverExited.AddListener(OnPlayerStopGazed);
+                }
+                else
+                {
+                    // 当所有音频和图像都播放完成时，循环重新开始
+                    currentIndex = 0;
+                }
             }
         }
         
         StopCoroutine(PlayAudioAndSwitchImages());
     }
     
-    public void OnPlayerGazed()
+    public void OnPlayerGazed(HoverEnterEventArgs args)
     {
         isPlayerNearby = true;
         isDialogueStarted = true;
         PlayAudioWhenPlayerNearby();
     }
 
-    public void OnPlayerStopGazed()
+    public void OnPlayerStopGazed(HoverExitEventArgs args)
     {
         isPlayerNearby = false;
         isDialogueStarted = false;

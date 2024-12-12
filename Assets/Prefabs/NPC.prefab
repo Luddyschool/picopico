@@ -624,9 +624,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 488187a1cd7ee4bec8d2baa47097b289, type: 3}
   - {fileID: 21300000, guid: 78cf26eecff3b47838f3ed97d18331da, type: 3}
   imageComponent: {fileID: 1989998696244510506}
-  isPlayerNearby: 0
+  isPlayerNearby: 1
   player: {fileID: 0}
-  dialogueTriggeringDistance: 5
+  dialogueTriggeringDistance: 20
+  isFollower: 0
 --- !u!82 &4370582849052613913
 AudioSource:
   m_ObjectHideFlags: 0
